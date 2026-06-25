@@ -1,0 +1,21 @@
+---
+title: 'Developing Data Products: Leaflet Map'
+author: "Chris Luchterhand"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Leaflet Map: Random Wisconsin Locations
+This map marks 5 randomly selected locations in Wisconsin:
+
+```{r map, echo=TRUE}
+library(leaflet)
+
+df <- data.frame(lat = runif(5, min=42.5, max=45.0),
+                 lng = runif(5, min=-91.0, max=-88.0))
+
+df %>%
+  leaflet() %>%
+  addTiles () %>%
+  addMarkers()
+```
