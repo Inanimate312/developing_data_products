@@ -74,3 +74,30 @@ shinyUI(fluidPage(
     )
   )
 ))
+
+# ______________________________________________________________________________
+
+# Reactive example:
+variable <- reactive({
+  input$input1 + input$input2
+})
+
+variable
+
+# Delayed reactivity
+submitButton("Submit")
+
+# ______________________________________________________________________________
+
+# Tabs
+sidebarLayout(
+  sidebarPanel(
+    textInput("box1", "Enter Tab 1 Text:", value = "Tab1!")
+  )
+)
+mainPanel(
+  tabsetPanel(type = "tabs",
+              tabPanel("tab 1", br(), textOutput("out1")))
+)
+
+# ______________________________________________________________________________
