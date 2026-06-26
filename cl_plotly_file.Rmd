@@ -1,12 +1,13 @@
 ---
-title: 'Developing Data Products: Plotly'
+title: 'Plotly Histogram of Old Faithful Eruptions'
 author: "Chris Luchterhand"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  revealjs::revealjs_presentation:
+    self_contained: true
 ---
 
-This plot is an interactive histogram of eruptions by the Old Faithful geyser.
-```{r plotly, echo=TRUE}
+```{r plotly, echo=FALSE, message=FALSE, warning=FALSE}
 library(plotly)
 
 plot_ly(
