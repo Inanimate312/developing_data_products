@@ -1,0 +1,39 @@
+---
+title: 'Shiny App Pitch: Old Faithful Eruptions Interactive Modeler'
+author: "Chris Luchterhand"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+---
+
+## Introduction
+
+This presentation demonstrates a useful interactive modeler application that can be built using Shiny in R. The application enables users to model the relationship between Old Faithful geyser eruption duration and wait time between eruptions using the Old Faithful geyser dataset provided in R.
+
+## Background: Old Faithful Geyser Dataset
+
+The Old Faithful dataset contains 272 observations of:
+
+- **Eruption duration** (minutes)  
+- **Waiting time** until the next eruption (minutes)
+
+Data set users might wonder whether there is any relationship between eruption duration and waiting time.
+
+## Summary Statistics
+
+In the dataset, we find that eruption duration ranges from 1.6 minutes to 5.1 minutes, with a median duration of 4 minutes. Wait time ranges from 43 minutes to 96 minutes, with a median of 76 minutes spent waiting between eruptions:
+```{r summary, echo=FALSE}
+summary(faithful)
+```
+The proposed app enables users to filter the data set to the desired duration and wait times, then construct a linear model of the relationship between duration and wait time.
+
+## Scatterplot
+The app will also depict the aforementioned relationship as a scatter plot, and enable users to use the constructed model to predict the wait time given an eruption duration.
+```{r plot, echo=FALSE}
+plot(faithful$eruptions, faithful$waiting,
+     pch = 19,
+     col = adjustcolor("darkblue", alpha.f = 0.3),
+     xlab = "Eruption Duration (Minutes)",
+     ylab = "Waiting Time (Minutes)")
+abline(lm(waiting ~ eruptions, data = faithful),
+       col = "red", lwd = 2)
+```
